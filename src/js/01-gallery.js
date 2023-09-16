@@ -1,5 +1,7 @@
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+// Описаний в документації
+import SimpleLightbox from "simplelightbox";
+// Додатковий імпорт стилів
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 // Add imports above this line
 import { galleryItems } from './gallery-items';
@@ -7,11 +9,10 @@ import { galleryItems } from './gallery-items';
 
 console.log(galleryItems);
 
-
 const gallery = document.querySelector('.gallery');
 
 gallery.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
-gallery.addEventListener("click", handleClick);
+// gallery.addEventListener("click", handleClick);
 
 function createMarkup(arr) {
     return arr.map(
@@ -28,23 +29,5 @@ function createMarkup(arr) {
   )
   .join(""); 
 }
-function handleClick(event) {
-      event.preventDefault();
-  if (event.target.nodeName !== 'IMG') return;
-    const original = event.target.dataset.source;
-    const description = event.target.alt;
-    const instance = basicLightbox.create(`<img src="${original}" alt="${description}"/>`,
-    {
-      onShow: instance => { addEventListener('keydown', closeEscape) },
-      onClose: instance => { addEventListener('keydown', closeEscape) }
-	}, 
-    );
-  instance.show();
-  // console.log(instance.visible())
-
-  function closeEscape(event) {
-    if (event.code === "Escape" && instance.visible()) { instance.close(); }
-  // console.log(instance.visible())
-}
-}
-// console.log(instance.visible())
+gallery.style.listStyleType = "none";
+const lightbox = new SimpleLightbox('.gallery a',{captionData: 'alt', captionDelay: 250});
