@@ -9,8 +9,6 @@ let checkoutData = JSON.parse(localStorage.getItem(LS_KEY)) ?? {};
 if (checkoutData) {
   form.email.value = checkoutData.email ?? '';
   form.message.value = checkoutData.message ?? '';
-console.log(form.email.value);
-console.log(form.message.value);
 }
 
 form.addEventListener('input', throttle(savedInput, 500));
