@@ -7,9 +7,10 @@ const player = new Player(iframe);
 
 
 let savedTime = localStorage.getItem('videoplayer-current-time');
-    if (savedTime != null) {
+
+  if (savedTime != null) {
   player.setCurrentTime(savedTime);
-    }
+  }
 
 function timeSaver() {
   player.getCurrentTime().then(function (seconds) {
